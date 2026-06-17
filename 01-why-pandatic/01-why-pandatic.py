@@ -1,27 +1,52 @@
-def insert_patient_data(name: str, age: int):
-
-    if type(name) == str and type(age) == int:
-
-        if age<0:
-            raise ValueError("Age can't be negative")
-        
-        print(name)
-        print(age)
-        print("Inserted into database")  # just for testing
-    else:
-        raise TypeError("Incorrect Datatype")
-    
-
-def update_patient_data(name: str, age: int):
-
-    if type(name) == str and type(age) == int:
-        print(name)
-        print(age)
-        print("Updated into database")
-    else:
-        raise TypeError("Incorrect Datatype")
+from pydantic import BaseModel, EmailStr, AnyUrl, Field
+from typing import List, Dict, Optional, Annotated
 
 
+class Patient(BaseModel):
 
-insert_patient_data("vbp", 8)
+    name: Annotated[str, Field(max_length=50, title="Name of the Patient", description="Give the name of the patient in less than 50 characters", examples=['Vishesh','Madhav'])]
+    email: EmailStr
+    github_url: AnyUrl
+    age: int = Field(gt=0, lt=120)
+    weight: Annotated[float, Field(gt=0, strict=True)]
+    married: Annotated[bool, Field(default=None, description="Is the person Married or not")]
+    allergies: Annotated[Optional[List[str]], Field(default=None, max_length=5)]
+    contact_details: Dict[str,int]
+
+
+def insert_patient_data(patient: Patient):
+
+    print(patient.name)
+    print(patient.email)
+    print(patient.github_url)
+    print(patient.age)
+    print(patient.weight)
+    print(patient.married)
+    print(patient.allergies)
+    print(patient.contact_details)
+    print("Inserted into database")  # just for testing
+
+
+def update_patient_data(patient: Patient):
+
+    print(patient.name)
+    print(patient.email)
+    print(patient.github_url)
+    print(patient.age)
+    print(patient.weight)
+    print(patient.married)
+    print(patient.allergies)
+    print(patient.contact_details)
+    print("Update into database")  # just for testing
+
+
+patient1_info = {"name":"vbp", "email":"vbp@gmail.com", "github_url":"https://github.com/visheshbpatel", "age":22, "weight":65,  'contact_details':{'phone':789789}}
+# we already se married to false
+# allergies was not added because it is option and set as None
+
+patient1 = Patient(**patient1_info)
+
+insert_patient_data(patient1)
+
+
 
