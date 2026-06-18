@@ -18,7 +18,7 @@ def insert_patient_data(patient: Patient):
 
     print(patient.name)
     print(patient.email)
-    print(patient.github_url)
+    print(patient.hospital_url)
     print(patient.age)
     print(patient.weight)
     print(patient.married)
@@ -31,7 +31,7 @@ def update_patient_data(patient: Patient):
 
     print(patient.name)
     print(patient.email)
-    print(patient.github_url)
+    print(patient.hospital_url)
     print(patient.age)
     print(patient.weight)
     print(patient.married)
@@ -40,7 +40,7 @@ def update_patient_data(patient: Patient):
     print("Update into database")  # just for testing
 
 
-patient1_info = {"name":"vbp", "email":"vbp@gmail.com", "hospital_website": "https://www.apollohospitals.com", "age":22, "weight":65,  'contact_details':{'phone':"789789"}}
+patient1_info = {"name":"vbp", "email":"vbp@gmail.com", "hospital_url": "https://www.apollohospitals.com", "age":22, "weight":65,  'contact_details':{'phone':"789789"}}
 # married was not provided, so it defaults to None
 # # allergies was not added because it is option and set as None
 
