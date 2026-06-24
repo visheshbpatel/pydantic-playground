@@ -27,3 +27,16 @@ print(patient1)
 print(patient1.name)
 print(patient1.address.city)
 print(patient1.address.pin)
+
+
+# This can also be done (valid)
+Patient_dict = {
+    'name':'vishesh',
+    'gender':'male',
+    'age':22,
+    'address':{
+        'city':'indore',
+        'state':'madhya pradesh',
+        'pin':'454545'
+    }
+}
